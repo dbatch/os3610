@@ -1,0 +1,452 @@
+    1  sudo visudo
+    2  setxkbmap dvoark
+    3  setxkbmap dvorak
+    4  sudo apt-get update ; sudo apt-get dist-upgrade
+    5  sudo reboot
+    6  setxkbmap dvorak
+    7  sudo apt-get install build-essential
+    8  sudo apt-get install firefox
+    9  sudo /media/trinity/VBOXADDITIONS_4.2.6_82870/VBoxLinuxAdditions.run 
+   10  sudo reboot
+   11  setxkbmap dvorak
+   12  sudo visudo
+   13  sudo apt-get install vim git firefox
+   14  sudo reboot
+   15  mkdir os161 os161/toolbuild os161/tools os161/tools/bin
+   16  vim .bashrc
+   17  setxkbmap dvorak
+   18  sudo apt-get install eclipse
+   19  sudo apt-get update ; sudo apt-get dist-upgrade
+   20  sudo apt-get install gnome-terminal
+   21  sudo vim /usr/share/applications/gnome-terminal.desktop 
+   22  cd os161/toolbuild/
+   23  tar xzf ~/Downloads/binutils-2.17+os161-2.0.1.tar.gz 
+   24  tar xzf ~/Downloads/gcc-4.1.2+os161-2.0.tar.gz 
+   25  tar xzf ~/Downloads/gdb-6.6+os161-2.0.tar.gz 
+   26  tar xzf ~/Downloads/bmake-20101215.tar.gz 
+   27  tar xzf ~/Downloads/mk-20100612.tar.gz 
+   28  tar xzf ~/Downloads/sys161-1.99.05.tar.gz 
+   29  ll
+   30  cd binutils-2.17+os161-2.0.1/
+   31  ./configure --nfp --disable-werror --target=mips-harvard-os161 --prefix=$HOME/os161/tools --disable-nls
+   32  make
+   33  find -name "*.info" | xargs touch
+   34  make
+   35  make install
+   36  make clean
+   37  cd ..
+   38  cd gcc-4.1.2+os161-2.0/
+   39  ./configure --nfp --disable-shared --disable-threads --disable-libmudflap --disable-libssp --target=mips-harvard-os161 --prefix=$HOME/os161/tools --disable-nls
+   40  make
+   41  make clean
+   42  make
+   43  make install
+   44  make clean
+   45  make allclean
+   46  make cleanall
+   47  make distclean
+   48  cd ..
+   49  ll
+   50  cd gdb-6.6+os161-2.0/
+   51  sudo apt-get install libreadline6-dev
+   52  ./configure --target=mips-harvard-os161 --prefix=$HOME/os161/tools --disable-nls --disable-werror
+   53  make
+   54  make install
+   55  cd ..
+   56  ll
+   57  cd sys161-1.99.05/
+   58  ./configure --prefix=$HOME/os161/tools mipseb
+   59  make
+   60  make install
+   61  cd ..
+   62  ll
+   63  ./bmake/boot-strap 
+   64  sudo su
+   65  cd ~/os161/tools
+   66  ls
+   67  cd bin/
+   68  ll
+   69  sh -c 'for i in mips-*; do ln -s $i os161-`echo $i | cut -d- -f4-`; done'
+   70  ls
+   71  cd ..
+   72  ll
+   73  rehash
+   74  gconftool-2 -s /apps/gnome-terminal/profiles/Default/cursor_blink_mode -t string off
+   75  sudo add-apt-repository -y ppa:webupd8team/java 
+   76  sudo apt-get update
+   77  sudo apt-get install -y oracle-jdk7-installer
+   78  tar xzf Downloads/eclipse-cpp-juno-SR1-linux-gtk.tar.gz 
+   79  cd /usr/lib/eclipse/
+   80  ll
+   81  cd ..
+   82  ll
+   83  sudo mv eclipse/ eclipse-3.7
+   84  sudo mv ~/eclipse .
+   85  cd /usr/bin
+   86  sudo mv eclipse eclipse-3.7
+   87  sudo vim eclipse-3.7 
+   88  sudo ln -s /usr/lib/eclipse/eclipse
+   89  ./eclipse
+   90  sudo reboot
+   91  setxkbmap dvorak
+   92  sudo reboot
+   93  setxkbmap dvorak
+   94  mv Downloads/BlueMatrix.jpg desktop.jpg
+   95  sudo apt-get remove transmission
+   96  sudo apt-get autoremove
+   97  sudo apt-get remove gnumeric
+   98  sudo reboot
+   99  setxkbmap dvorak
+  100  man bmake
+  101  cd os161/
+  102  find -name "man"
+  103  vim ~/.bashrc
+  104  man sys161
+  105  cd os161/tools/man/
+  106  ll
+  107  cd man1
+  108  ll
+  109  cd ..
+  110  ll
+  111  cd man7
+  112  ll
+  113  man gpl
+  114  man fsf-funding
+  115  cd ..
+  116  ll
+  117  cd man1/
+  118  ll
+  119  man mips-harvard-os161-addr2line
+  120  sh -c 'for i in mips-*; do ln -s $i os161-`echo $i | cut -d- -f4-`; done'
+  121  ls
+  122  man os161-ar
+  123  man os161-addr2line
+  124  setxkbmap dvorak
+  125  sudo apt-get update ; sudo apt-get dist-upgrade
+  126  lof
+  127  lsof
+  128  top
+  129  iotop
+  130  sudo apt-get install iotop
+  131  sudo apt-get clean
+  132  df -h
+  133  ll
+  134  cd ..
+  135  sudo du -sh *
+  136  cd home
+  137  cd trinity/
+  138  sudo du -sh *
+  139  cd Downloads/
+  140  ll
+  141  rm -rf *
+  142  ll
+  143  cd ..
+  144  df -h
+  145  ll
+  146  cd os161/toolbuild/
+  147  ll
+  148  rm -rf *
+  149  ll
+  150  df -
+  151  df -h
+  152  cd ..
+  153  du -sh *
+  154  cd os161/
+  155  du -sh *
+  156  cd tool
+  157  cd tools
+  158  ls
+  159  du -sh *
+  160  cd ../..
+  161  ll
+  162  cd ../..
+  163  sudo du -sh *
+  164  cd usr/
+  165  ll
+  166  sudo du -sh *
+  167  cd lib/
+  168  sudo du -sh *
+  169  sudo du -sh * | grep M
+  170  df -h
+  171  mount
+  172  sudo reboot
+  173  hy 'j
+  174  setxkbmap dvorak
+  175  cd Desktop/
+  176  vim README
+  177  vim START
+  178  vim README
+  179  rm START 
+  180  ifconfig 
+  181  ifconfig /reset
+  182  ifconfig /release
+  183  ifconfig -h
+  184  pwd
+  185  ls
+  186  cd os161/
+  187  ls
+  188  cd tools/
+  189  ls
+  190  cd ..
+  191  cd -
+  192  cd ../
+  193  ls
+  194  cd tool
+  195  cd toolbuild/
+  196  ls
+  197  cd /
+  198  ls
+  199  cd root/
+  200  cd ~
+  201  ls
+  202  cd os161/
+  203  ls
+  204  grep kern
+  205  clear
+  206  cd $HOME/root
+  207  cd $HOME
+  208  ls
+  209  whichgit
+  210  which git
+  211  which sys161
+  212  cd /home/trinity/os161/tools/bin//sys161
+  213  cd /home/trinity/os161/tools/bin/
+  214  ls
+  215  cd ..
+  216  ls
+  217  cd share/
+  218  ls
+  219  cd examples/
+  220  ls
+  221  cd sys161/
+  222  ls
+  223  cd ../
+  224  cd ../\
+  225  cd ../
+  226  ls
+  227  cd ../
+  228  ls -al
+  229  cd tools/
+  230  ls -al
+  231  cd ~
+  232  which gdb
+  233  git clone https://github.com/script3r/os161.git src
+  234  ls
+  235  cd src/
+  236  ls
+  237  ls -al
+  238  ./configure 
+  239  bmake && bmake install
+  240  ls
+  241  cd kern/conf/
+  242  ls
+  243  ./config ASST0
+  244  cd ../compile
+  245  ls
+  246  cd ASST0/
+  247  ls
+  248  bmake depend
+  249  bmake
+  250  bmake install
+  251  cd ~/root
+  252  ls
+  253  ls ~/os161/tools/share/examples/sys161/sys161.conf.sample
+  254  cp ~/os161/tools/share/examples/sys161/sys161.conf.sample .
+  255  ls
+  256  mv sys161.conf.sample sys161.conf
+  257  ls
+  258  vi sys161.conf 
+  259  sys161 kernel
+  260  cd ~/root/
+  261  ls
+  262  sys161 kernel
+  263  ls
+  264  cd ~
+  265  ls
+  266  cd src/
+  267  ls
+  268  cd kern/
+  269  la
+  270  ls
+  271  ls -al conf/
+  272  vi conf/ASST0 
+  273  cd ~
+  274  ls
+  275  cd src/
+  276  cd ../root/
+  277  ls
+  278  cd ..
+  279  cd ~
+  280  cd src/
+  281  ls
+  282  cd user/
+  283  ls
+  284  cd testbin/
+  285  ls
+  286  cd ..
+  287  ls
+  288  cd sbin/
+  289  ls
+  290  cd ../kern
+  291  cd ../../kern
+  292  ls
+  293  cd arch/
+  294  ls
+  295  cd mips/
+  296  ls
+  297  cd conf/
+  298  ls
+  299  vi conf.arch 
+  300  clear
+  301  cd ~
+  302  ls
+  303  which sys161
+  304  whichbmake
+  305  which bmake
+  306  cd ~/.ssh
+  307  cd src/
+  308  ll
+  309  cd patches/
+  310  ls
+  311  cd../
+  312  cd ../
+  313  ls
+  314  pwd
+  315  ./configure
+  316  ls
+  317  cd ../root
+  318  ls
+  319  cd ../src/
+  320  ls
+  321  bmake && bmake install
+  322  cd ..
+  323  cd root/
+  324  ls
+  325  cd ..
+  326  ll root/
+  327  clean
+  328  ls
+  329  rm -r src/
+  330  rm -R src/
+  331  ls
+  332  rm -R root/
+  333  ls
+  334  cd os161/
+  335  ls
+  336  cd ~
+  337  git clone https://github.com/arthurdent/os161.git src
+  338  cd os161/
+  339  ls
+  340  cd ~
+  341  ping google.com
+  342  clear
+  343  git clone https://github.com/arthurdent/os161.git src
+  344  ls
+  345  cd src/
+  346  ls
+  347  ll
+  348  cat UW-NOTES 
+  349  clear
+  350  cd ~/os161
+  351  ls
+  352  cd ~
+  353  cd src/
+  354  ls
+  355  ll
+  356  which bmake
+  357  which sys161
+  358  which gbd
+  359  which git
+  360  clear
+  361  ll
+  362  cd build/
+  363  ls
+  364  cd ../
+  365  ./configure 
+  366  bmake && bmake install
+  367  cd ~
+  368  ls
+  369  ll
+  370  ls
+  371  cd os161/
+  372  ls
+  373  cd ../
+  374  cd src/
+  375  ls
+  376  cd kern/
+  377  ls
+  378  cd con
+  379  cd conf/
+  380  ls
+  381  vi ASST0
+  382  cd ..
+  383  ls
+  384  grep main.c
+  385  grep "main.c"
+  386  find "main.c"
+  387  cd ..
+  388  ll
+  389  ls
+  390  cd cs161/
+  391  ls
+  392  cd root/
+  393  cd include/
+  394  ls
+  395  cd kern/
+  396  ls
+  397  cd ..
+  398  ls
+  399  cd hostinclude/
+  400  ls
+  401  cd kern
+  402  ls
+  403  cd ~/
+  404  ls
+  405  cd src/
+  406  ls
+  407  cd kern/
+  408  ls
+  409  cd compile/
+  410  ls
+  411  cd /
+  412  ls
+  413  which git
+  414  git remote -v
+  415  git config --global user.name "Prof Batchelor"
+  416  git config --global user.email "db.keiseruniversity@gmail.com"
+  417  git credential-osxkeychain
+  418  touch gitsetup.sh
+  419  touch setup.sh
+  420  ls
+  421  vi setup-git.sh
+  422  ls
+  423  ll
+  424  cd root/
+  425  ls
+  426  cd ~
+  427  ls
+  428  touch gitsetup.sh
+  429  vi gitsetup.sh 
+  430  ls
+  431  chmod 700 gitsetup.sh 
+  432  ll
+  433  ls
+  434  ./gitsetup.sh 
+  435  ls
+  436  mv gitsetup.sh src/
+  437  ls
+  438  cd src/
+  439  ls
+  440  git init
+  441  git commit -m "first commit"
+  442  git remote origin https://github.com/dbatch/os3610.git
+  443  git remote add origin https://github.com/dbatch/os3610.git
+  444  git remote -v
+  445  git remote remove
+  446  git remote rm origin
+  447  git remote -v
+  448  git remote add origin https://github.com/dbatch/os3610.git
+  449  git remote -v
+  450  git add .
+  451  git push -u origin master
+  452  history >> commands.txt
